@@ -26,21 +26,26 @@ public class CaffeApp {
 
     public void start() {
         boolean run = true;
-        while (run) {
-            printMenuOptions();
-            String choice = scanner.nextLine();
 
-            switch (choice) {
-                case "1" -> showMenu();
-                case "2" -> addOrder();
-                case "3" -> showCurrentOrder();
-                case "4" -> showTotalPrice();
-                case "5" -> applyDiscount();
-                case "0" -> {
-                    System.out.println("Завершение работы");
-                    run = false;
+        while (run) {
+            try {
+                printMenuOptions();
+                String choice = scanner.nextLine();
+
+                switch (choice) {
+                    case "1" -> showMenu();
+                    case "2" -> addOrder();
+                    case "3" -> showCurrentOrder();
+                    case "4" -> showTotalPrice();
+                    case "5" -> applyDiscount();
+                    case "0" -> {
+                        System.out.println("Завершение работы");
+                        run = false;
+                    }
+                    default -> System.out.println("Неверный ввод");
                 }
-                default -> System.out.println("Неверный ввод");
+            } catch (RuntimeException e) {
+                System.out.println("Ошибка попробуйте снова");
             }
         }
     }
